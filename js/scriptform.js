@@ -6,6 +6,7 @@ form.addEventListener('submit', function(event) {
     event.preventDefault()
 
     //1-Recuperer les donées dans le localStore
+    
     const nom = document.getElementById('nom').value;
     const mail = document.getElementById('mail');
     const psw = document.getElementById('psw');
@@ -17,6 +18,10 @@ form.addEventListener('submit', function(event) {
     localStorage.setItem('verifpsw', verifpsw.value);
 
     console.log(nom);
+
+    //il me faut maintenant créer une itération de cela pour ne pas écraser les informations de l'utiisateur précedent
+
+ 
 
 
     
