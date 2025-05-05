@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+
+<body>
+    
+
+    <main>
+        <fieldset>
+            <form id="formulaire">
+                <title>Formulaire d'enregistrement</title>
+                <label for="name">Nom: </label>
+                <input type="text" id="nom" placeholder="Votre nom">
+                <br>
+                <label for="mail">@</label>
+                <input type="email" name="mail" id="email">
+                <br>
+                <label for="mdp">Entrez votre mot de passe</label>
+                <input type="password" name="mdp" id="psw"  pattern="(?=.* ?[#?!@$%^&*-])(?=.* ?[A-Z]).{8,}">
+                <br>
+                <label for="mdpverif">Entrez votre mot de passe</label>
+                <input type="password" name="mdpverif" id="psw" pattern="(?=.* ?[#?!@$%^&*-])(?=.* ?[A-Z]).{8,}">
+                <br>
+                <button type="submit">Envoyez</button>
+                <button type="reset">Annuler</button>
+            </form>
+        </fieldset>
+    </main>
+    <script src="../js/script.js"></script>
+</body>
+
+</html>
