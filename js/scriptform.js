@@ -26,7 +26,7 @@ form.addEventListener('submit', function(event) {
     //recupétation des donnée des utilisateur en les mettants dans un tableau vide
     let utilisateur = localStorage.getItem("utilisateur");
 
-   /* if (utilisateur) {
+   /*if (utilisateur) {
       utilisateur = JSON.parse(utilisateur);//fonction qui transforme le texte en object
     } else {
       utilisateur = [];
@@ -36,8 +36,8 @@ form.addEventListener('submit', function(event) {
     utilisateur.push(newUtilisateur);
 
     const utilisateurText = JSON.stringify(utilisateur);// fonction qui transforme le tableau en texte
-    localStorage.setItem('utilisateur', utilisateurText)
-    */
+    localStorage.setItem('utilisateur', utilisateurText)*/
+    
 
     //2- Logique de verification des différents champs
 
@@ -50,7 +50,25 @@ form.addEventListener('submit', function(event) {
         document.getElementById("messageNom").style.display ="block";
       }  
     
-    //Verif du champ mail
+
+      // Verif email /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
+
+    //Verif que les champs de mots de passe soient identique
+
+    if (psw != verifpsw){
+      document.getElementById("messageMdp").style.display ="block";
+    } else {
+      
+    }
+
+    //Verification de la sécurité du mot de passe 
+    
+      //variable a verifier dans la condition
+        const textVerif = /^[a-zA-Z]+$/;
+        const numberVerif = /^[0-9]+$/;
+        
+
+
     
     
 
