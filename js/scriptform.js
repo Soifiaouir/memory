@@ -66,8 +66,13 @@ form.addEventListener('submit', function(event) {
       //variable a verifier dans la condition
         const textVerif = /^[a-zA-Z]+$/;
         const numberVerif = /^[0-9]+$/;
-        
 
+    
+        
+//Regular expressions are patterns used to match character combinations in strings. In JavaScript, regular expressions are also objects. These patterns are used with the exec() and test() 
+// methods of RegExp, and with the match(), matchAll(), replace(), replaceAll(), search(), and split() methods of String. This chapter describes JavaScript regular expressions. 
+// It provides a brief overview of each syntax element.
+//  For a detailed explanation of each one's semantics, read the regular expressions reference.
 
     
     
