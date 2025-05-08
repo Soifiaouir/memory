@@ -11,49 +11,61 @@ form.addEventListener('submit', function(event) {
     const mail = document.getElementById('mail').value;
     const psw = document.getElementById('psw').value;
     const verifpsw = document.getElementById('mdpverif').value;
-   
+    
     console.log(nom);
-
+    
     //création d'un objet
     // faire attention a ce que le format recuperer ressemble a un format JSON
     let newUtilisateur = {
-        nom : nom,
-        mail :mail,
-        psw : psw,
-        verifpsw : verifpsw
+      nom : nom,
+      mail :mail,
+      psw : psw,
+      verifpsw : verifpsw
     }
     
     //recupétation des donnée des utilisateur en les mettants dans un tableau vide
     let utilisateur = localStorage.getItem("utilisateur");
-
-   /*if (utilisateur) {
+    
+    if (utilisateur) {
       utilisateur = JSON.parse(utilisateur);//fonction qui transforme le texte en object
-    } else {
-      utilisateur = [];
+      } else {
+        utilisateur = [];
     }
-
+    
     //ajout des nouveaux utilisateurs dans le localStorage
     utilisateur.push(newUtilisateur);
-
-    const utilisateurText = JSON.stringify(utilisateur);// fonction qui transforme le tableau en texte
-    localStorage.setItem('utilisateur', utilisateurText)*/
     
-
+    const utilisateurText = JSON.stringify(utilisateur);// fonction qui transforme le tableau en texte
+    localStorage.setItem('utilisateur', utilisateurText)
+    
+    
     //2- Logique de verification des différents champs
-
+    
     //verif du champs nom  
 
-      if (/^[a-zA-Z]+$/.test(nom) == true){
-        console.log('banane');
-      } else{
-        console.log('panama'); 
-        document.getElementById("messageNom").style.display ="block";
-      }  
+    if (/^[a-zA-Z]{3,}$/.test(nom) == true ){
+    } else{
+      document.getElementById("messageNom").style.display ="block";
+    }  
     
+    
+    // Verif email 
+    const mailInput = document.getElementById('mail');
+    const messageEmail = document.getElementById('messageEmail');
+    
+      mailInput.addEventListener('input',function(){
+        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail) == true){
+          messageEmail.innerText = "votre email est valide";
+          messageEmail.style.display ='block';
+        } else {
+          messageEmail.innerText = "votre email n'est pas valide";
+          messageEmail.style.display ='block';
+        }
+      });
 
-      // Verif email /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
 
-    //Verif que les champs de mots de passe soient identique
+
+      //Verif que les champs de mots de passe soient identique
 
     if (psw != verifpsw){
       document.getElementById("messageMdp").style.display ="block";
