@@ -62,8 +62,10 @@ form.addEventListener('submit', function(event) {
 
   // 2- Récupérer les données dans le localStorage
 
-    
+  
   // Création d'un objet
+  // Créer une condition de verification que l'utilisateurs néxiste pas déjà
+
   // Faire attention à ce que le format récupéré ressemble à un format JSON
   let newUtilisateur = {
     nom: nom.value,
@@ -86,9 +88,6 @@ form.addEventListener('submit', function(event) {
     
   const utilisateurText = JSON.stringify(utilisateur); // Fonction qui transforme le tableau en texte
   localStorage.setItem('utilisateur', utilisateurText);
-
-  // Créer une condition de verification que l'utilisateurs néxiste pas déjà
-  
 
 
 
