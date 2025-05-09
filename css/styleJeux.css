@@ -1,6 +1,9 @@
 body{
-    background-color: rgb(3, 35, 91);
-    color: blanchedalmond;
+    margin: 0%;
+    background-color: #FFF8C7;
+    color: #F799BD;
+    font-family: "Exo", sans-serif;
+    text-align: center;
 }
 
 a{

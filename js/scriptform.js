@@ -7,12 +7,12 @@ form.addEventListener('submit', function(event) {
 
     //1-Recuperer les donées dans le localStore
     
-    const nom = document.getElementById('nom').value;
+    const nom = document.getElementById('nom');
     const mail = document.getElementById('mail').value;
-    const psw = document.getElementById('psw').value;
+    const psw = document.getElementById('psw');
     const verifpsw = document.getElementById('mdpverif').value;
     
-    console.log(nom);
+    console.log(nom.value);
     
     //création d'un objet
     // faire attention a ce que le format recuperer ressemble a un format JSON
@@ -42,24 +42,39 @@ form.addEventListener('submit', function(event) {
     //2- Logique de verification des différents champs
     
     //verif du champs nom  
+    const messageNom = document.getElementById('messageNom');
+    const regexNom = /^[a-zA-Z]+$/;
 
-    if (/^[a-zA-Z]{3,}$/.test(nom) == true ){
-    } else{
-      document.getElementById("messageNom").style.display ="block";
-    }  
-    
+      
+      
+    console.log(nom.value);
+    if (regexNom.test(nom.value)) {
+      messageNom.style.display = "none";
+    } else {
+     
+      nom.addEventListener('input', function() {
+        messageNom.innerText ='pas valide'
+        messageNom.style.display = "block";
+      })
+    }
+  ;
+
     
     // Verif email 
     const mailInput = document.getElementById('mail');
     const messageEmail = document.getElementById('messageEmail');
     
-      mailInput.addEventListener('input',function(){
-        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail) == true){
+      mailInput.addEventListener('click',function(){
+        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail) && /^[a-zA-Z]+$/.test(mail) ){
           messageEmail.innerText = "votre email est valide";
-          messageEmail.style.display ='block';
+          console.log('tagada');
+          
+          
         } else {
           messageEmail.innerText = "votre email n'est pas valide";
           messageEmail.style.display ='block';
+          console.log('rouge');
+          
         }
       });
 
@@ -75,10 +90,17 @@ form.addEventListener('submit', function(event) {
 
     //Verification de la sécurité du mot de passe 
     
-      //variable a verifier dans la condition
-        const textVerif = /^[a-zA-Z]+$/;
-        const numberVerif = /^[0-9]+$/;
+    const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
 
+     
+        if (regexPassword.test(psw.value)) {
+         console.log('cool');
+         ;
+        } else {
+          console.log('pas cool');
+          
+        }
+      
     
         
 //Regular expressions are patterns used to match character combinations in strings. In JavaScript, regular expressions are also objects. These patterns are used with the exec() and test() 

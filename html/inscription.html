@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form</title>
     <link rel="stylesheet" href="../css/styleForm.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -25,14 +28,14 @@
         <fieldset>
             <form id="formulaire" >
                 <title>Formulaire d'enregistrement</title>
-                <label for="name">Nom: </label>
+                <label for="nom">Nom: </label>
                 <input type="text" id="nom" placeholder="3 caractere minimum"><br>
-                <span id="messageNom" style="display: none; color:red;font-size: 2em;">Veuillez ecrire seulement des lettres majuscules ou minuscules</span>
+                <span id="messageNom">Veuillez ecrire seulement des lettres majuscules ou minuscules</span>
                 <br>
                 <br>
                 <label for="mail">Email</label>
-                <input type="text" id="mail">
-                <span id="messageEmail" ></span>
+                <input type="text" id="mail"><br>
+                <span id="messageEmail" >Votre email doit contenir '@' et un '.'</span>
                 <br>
                 <br>
                 <label for="mdp">Entrez votre mot de passe</label>
@@ -51,5 +54,6 @@
     </main>
     <script src="../js/scriptform.js"></script>
 </body>
+
 
 </html>

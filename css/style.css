@@ -1,8 +1,8 @@
 body{
     margin: 0%;
-    background-color: black;
-    color: blanchedalmond;
-    font-family: 'Times New Roman', Times, serif;
+    background-color: #FFF8C7;
+    color: #F799BD;
+    font-family: "Exo", sans-serif;
     text-align: center;
 }
 
@@ -16,6 +16,13 @@ h2{
 
 a{
     text-decoration: none;
+    color: #06C7E2;
+    
+    
+}
+ul, li{
+    list-style: none;
+    font-weight: bolder;
     
 }
 
