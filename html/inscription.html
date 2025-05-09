@@ -30,24 +30,23 @@
                 <title>Formulaire d'enregistrement</title>
                 <label for="nom">Nom: </label>
                 <input type="text" id="nom" placeholder="3 caractere minimum"><br>
-                <span id="messageNom">Veuillez ecrire seulement des lettres majuscules ou minuscules</span>
+                <span id="messageNom"></span>
                 <br>
                 <br>
                 <label for="mail">Email</label>
-                <input type="text" id="mail"><br>
-                <span id="messageEmail" >Votre email doit contenir '@' et un '.'</span>
-                <br>
+                <input type="text" id="mail" placeholder="Votre email doit contenir '@' et un '.'"><br>
+                <span id="messageEmail"></span>
                 <br>
                 <label for="mdp">Entrez votre mot de passe</label>
                 <input type="password" name="mdp" id="psw"  >
                 <br>
-                <span id="messageMdp"  style="display: none;color:red;font-size: 2em;">Les mots de passe ne sont pas identique</span>
+                <span id="messageMdp"></span>
                 <br>
                 <label for="mdpverif">Validez votre mot de passe</label>
                 <input type="password" name="mdpverif" id="mdpverif" >
                 <br>
                 <br>
-                <button type="submit">Envoyez</button>
+                <button type="submit" id="'valider">Envoyez</button>
                 <button type="reset">Annuler</button>
             </form>
         </fieldset>

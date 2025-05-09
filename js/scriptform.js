@@ -1,115 +1,104 @@
-//Mise ne place des fonctionnalités du formulaire 
-
+// Mise en place des fonctionnalités du formulaire 
 const form = document.getElementById('formulaire');
 
 form.addEventListener('submit', function(event) {
-    event.preventDefault()
+  event.preventDefault();
 
-    //1-Recuperer les donées dans le localStore
+  // 1- Logique de vérification des différents champs
+   
+  const nom = document.getElementById('nom');
+  const mail = document.getElementById('mail');
+  const psw = document.getElementById('psw');
+  const verifpsw = document.getElementById('mdpverif');
     
-    const nom = document.getElementById('nom');
-    const mail = document.getElementById('mail').value;
-    const psw = document.getElementById('psw');
-    const verifpsw = document.getElementById('mdpverif').value;
-    
-    console.log(nom.value);
-    
-    //création d'un objet
-    // faire attention a ce que le format recuperer ressemble a un format JSON
-    let newUtilisateur = {
-      nom : nom,
-      mail :mail,
-      psw : psw,
-      verifpsw : verifpsw
-    }
-    
-    //recupétation des donnée des utilisateur en les mettants dans un tableau vide
-    let utilisateur = localStorage.getItem("utilisateur");
-    
-    if (utilisateur) {
-      utilisateur = JSON.parse(utilisateur);//fonction qui transforme le texte en object
-      } else {
-        utilisateur = [];
-    }
-    
-    //ajout des nouveaux utilisateurs dans le localStorage
-    utilisateur.push(newUtilisateur);
-    
-    const utilisateurText = JSON.stringify(utilisateur);// fonction qui transforme le tableau en texte
-    localStorage.setItem('utilisateur', utilisateurText)
-    
-    
-    //2- Logique de verification des différents champs
-    
-    //verif du champs nom  
-    const messageNom = document.getElementById('messageNom');
-    const regexNom = /^[a-zA-Z]+$/;
+  console.log(nom.value);
 
+  // Verif du champ nom  
+  const messageNom = document.getElementById('messageNom');
+  const regexNom = /^[a-zA-Z]+$/; 
       
-      
-    console.log(nom.value);
-    if (regexNom.test(nom.value)) {
-      messageNom.style.display = "none";
-    } else {
-     
-      nom.addEventListener('input', function() {
-        messageNom.innerText ='pas valide'
-        messageNom.style.display = "block";
-      })
-    }
-  ;
+  console.log(nom.value);
+
+  if (regexNom.test(nom.value)) {
+    messageNom.style.display = "none";
+  } else {
+    messageNom.innerText = 'Votre nom ne respecte pas les conditions demandées';
+    messageNom.style.display = "block";
+    messageNom.style.color = "#951432";
+  };
+
+  // Verif email 
+  const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const messageEmail = document.getElementById('messageEmail');
+    
+  if (regexEmail.test(mail.value)) {
+    
+  } else {
+    messageEmail.innerText = "Votre email n'est pas valide";
+    messageEmail.style.display = 'block';
+    messageEmail.style.color = "#951432";
+    console.log('Soucis regex mail');  
+  }
+
+  // Verif que les champs de mots de passe soient identiques
+  const messageMdp = document.getElementById("messageMdp");
+
+  if (psw.value === verifpsw.value) {
+    console.log('Mots de passe identiques');
+  } else {
+    messageMdp.innerText = 'Les mots de passe ne sont pas identiques';
+    messageMdp.style.display = "block";
+    messageMdp.style.color = "#951432";
+  }
+
+  // Vérification de la sécurité du mot de passe 
+  const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+ 
+  if (regexPassword.test(psw.value)) {
+    console.log('Cool');
+  } else {
+    console.log('Mot de passe pas valide');
+  }
+
+  // 2- Récupérer les données dans le localStorage
 
     
-    // Verif email 
-    const mailInput = document.getElementById('mail');
-    const messageEmail = document.getElementById('messageEmail');
+  // Création d'un objet
+  // Faire attention à ce que le format récupéré ressemble à un format JSON
+  let newUtilisateur = {
+    nom: nom.value,
+    mail: mail.value,
+    psw: psw.value,
+    verifpsw: verifpsw.value,
+  };
     
-      mailInput.addEventListener('click',function(){
-        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail) && /^[a-zA-Z]+$/.test(mail) ){
-          messageEmail.innerText = "votre email est valide";
-          console.log('tagada');
-          
-          
-        } else {
-          messageEmail.innerText = "votre email n'est pas valide";
-          messageEmail.style.display ='block';
-          console.log('rouge');
-          
-        }
-      });
-
-
-
-      //Verif que les champs de mots de passe soient identique
-
-    if (psw != verifpsw){
-      document.getElementById("messageMdp").style.display ="block";
-    } else {
-      
-    }
-
-    //Verification de la sécurité du mot de passe 
+  // Récupération des données des utilisateurs en les mettant dans un tableau vide
+  let utilisateur = localStorage.getItem("utilisateur");
     
-    const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-
-     
-        if (regexPassword.test(psw.value)) {
-         console.log('cool');
-         ;
-        } else {
-          console.log('pas cool');
-          
-        }
-      
+  if (utilisateur) {
+    utilisateur = JSON.parse(utilisateur); // Fonction qui transforme le texte en objet
+  } else {
+    utilisateur = [];
+  }
     
-        
-//Regular expressions are patterns used to match character combinations in strings. In JavaScript, regular expressions are also objects. These patterns are used with the exec() and test() 
-// methods of RegExp, and with the match(), matchAll(), replace(), replaceAll(), search(), and split() methods of String. This chapter describes JavaScript regular expressions. 
-// It provides a brief overview of each syntax element.
-//  For a detailed explanation of each one's semantics, read the regular expressions reference.
-
+  // Ajout des nouveaux utilisateurs dans le localStorage
+  utilisateur.push(newUtilisateur);
     
-    
+  const utilisateurText = JSON.stringify(utilisateur); // Fonction qui transforme le tableau en texte
+  localStorage.setItem('utilisateur', utilisateurText);
 
-}
-);
+  // Créer une condition de verification que l'utilisateurs néxiste pas déjà
+  
+
+
+
+  // Validation du formulaire et renvoi vers la page de connexion
+  if (regexNom.test(nom.value) && regexEmail.test(mail.value) && regexPassword.test(psw.value) && psw.value === verifpsw.value) {
+    // Si toutes les conditions sont validées, rediriger
+    window.location.href = "../html/conection.html";
+  } else {
+    // Si les conditions échouent, afficher un message d'erreur ou d'alerte
+    alert("Veuillez vérifier vos informations et réessayer.");
+  }
+  // localStorage.clear();
+});
